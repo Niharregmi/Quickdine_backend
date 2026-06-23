@@ -10,12 +10,14 @@ console.log(" USER ROUTES LOADED");
 
 router.post("/register", userController.register.bind(userController));
 router.post("/login", userController.login.bind(userController));
-router.get("/me", authMiddleware, userController.getMe.bind(userController));
+
+router.get("/whoami", authMiddleware, userController.whoami.bind(userController));
+
 router.patch(
-  "/me",
+  "/update",
   authMiddleware,
   upload.single("profilePicture"),
-  userController.updateMe.bind(userController)
+  userController.updateProfile.bind(userController)
 );
 console.log("USER ROUTES FILE LOADED");
 
